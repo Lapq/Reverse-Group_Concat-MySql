@@ -1,2 +1,4 @@
 # Reverse-Group_Concat-MySql
-Method for MySQL for reversing the result of a GROUP_CONCAT function using common table expressions
+GROUP_CONCAT, LISTAGG or some other name, depending on the SQL dialect, is an aggregation function which takes values from several rows and lists them in a single string, separated by some pre-defined character(s). There's currently no builtin way of reversing this operation in MySQL.
+
+So here is a possible way of implementing it, using recursive CTEs (common table expressions). It's presented just as a query for didatic purposes, you can copy and test it around using whatever host you have access to, as it will not generate physically stored data in this current form. To actually use it on real tables, you will have to rewrite it for the application of your choosing. I personally use a variation of this in the form of a procedure, which stores the result on a real table object. Maybe it can also be writen as a function to be called just to manipulate temporary data inside a query, although it might not properly use existing indexes.
